@@ -1,0 +1,66 @@
+﻿@page "/todo"
+@using BlazorApp.Server.Models
+@inject HttpClient client
+@inject IJSRuntime js
+
+
+<h3>Todo</h3>
+<small>Add thing to todo list.</small>
+<div class="form-group">
+    <a class="btn btn-success" href="Todo/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br>
+@if (todos == null)
+{
+    <text>Loading todos... </text>
+}
+else if (todos.Length == 0)
+{
+    <text>No Records Found.</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in todos)
+            {
+                <tr>
+                    <td>@item.TodoID</td>
+                    <td>@item.Date</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a class="btn btn-success" href="Todo/edit/@item.TodoID">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => Delete(item.TodoID))">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    Todo[] todos { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        todos = await client.GetFromJsonAsync<Todo[]>("api/v1.0/Todo");
+    }
+
+    async Task Delete(int todoId)
+    {
+        var todo = todos.First(x => x.TodoID == todoId);
+        if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
+        {
+            await client.DeleteAsync($"api/v1.0/Todo/{todoId}");
+            await OnInitializedAsync();
+        }
+    }
+}
