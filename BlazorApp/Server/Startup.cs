@@ -27,10 +27,10 @@ namespace BlazorApp.Server
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddServerSideBlazor();
-            services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddServerSideBlazor();
             services.AddScoped<IUser, UserRepository>();
             services.AddScoped<ITodo, TodoRepository>();
             services.AddScoped<IDiary, DiaryRepository>();
