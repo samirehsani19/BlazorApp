@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BlazorApp.Server.Models;
 using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Server.Services.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorApp.Server.Controllers
@@ -22,5 +23,47 @@ namespace BlazorApp.Server.Controllers
             var todo = await _todoRepo.GetTodos();
             return Ok(todo);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var todo = await _todoRepo.GetTodoByID(id);
+            return Ok(todo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(Todo todo)
+        {
+           _todoRepo.Add(todo);
+            if (await _todoRepo.Save())
+            {
+                return Ok(todo.Title);
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError,$"Todo with title: {todo.Title} could not be created");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(Todo todo)
+        {
+            _todoRepo.Update(todo);
+            if (await _todoRepo.Save())
+            {
+                return Ok(todo.Title);
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be updated");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var todo = await _todoRepo.GetTodoByID(id);
+            _todoRepo.Delete(todo);
+            if (await _todoRepo.Save())
+            {
+                return Ok($"Todo with id {id} deleted successfully!");
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with id: {id} could not be deleted");
+        }
+
     }
 }

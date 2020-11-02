@@ -28,7 +28,7 @@ namespace BlazorApp.Server.Services.Repositories
             _context.Remove(entity);
         }
 
-        public virtual void Edit<T>(T entity) where T : class
+        public virtual void Update<T>(T entity) where T : class
         {
             _logger.LogInformation($"Updating entity of type {entity.GetType()}");
             _context.Update(entity);

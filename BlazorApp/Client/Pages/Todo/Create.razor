@@ -1,5 +1,16 @@
-﻿<h3>Create</h3>
+﻿@using BlazorApp.Server.Models
+@page "/todo/create"
+@inject HttpClient http
+@inject NavigationManager uriHelper
+<h3>Create</h3>
+
+<Form ButtonText="Create Todo" todo="@todo" OnValidSubmit="@CreateTodo" />
 
 @code {
-
+    Todo todo = new Todo();
+    async Task CreateTodo()
+    {
+        await http.PostAsJsonAsync("api/v1.0/todo", todo);
+        uriHelper.NavigateTo("todo");
+    }
 }

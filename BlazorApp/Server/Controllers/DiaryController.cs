@@ -13,10 +13,19 @@ namespace BlazorApp.Server.Controllers
     {
         private readonly IDiary _diaryRepo;
         public DiaryController(IDiary d) => _diaryRepo = d;
-        
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return Ok(await _diaryRepo.GetDiaries());
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult>GetByID(int id)
+        {
+            var diary=_diaryRepo.GetDiaryByID(id);
+            return Ok(diary);
+        }
+
     }
 }
