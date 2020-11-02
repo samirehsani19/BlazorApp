@@ -4,8 +4,7 @@
 @inject IJSRuntime js
 @using BlazorApp.Server.Models
 <h3>Edit</h3>
-<Form ButtonText="Update" todo="todo"
-      OnValidSubmit="@EditTodo" />
+<Form ButtonText="Update" todo="todo" OnValidSubmit="@EditTodo" />
 @code {
     [Parameter] public int todoId { get; set; }
     Todo todo = new Todo();

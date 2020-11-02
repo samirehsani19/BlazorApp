@@ -21,7 +21,7 @@
         <div>
             <label>Description :</label>
             <div>
-                <InputText @bind-Value="@todo.Description"></InputText>
+                <InputTextArea @bind-Value="@todo.Description"></InputTextArea>
                 <ValidationMessage For="@(()=> todo.Description)"></ValidationMessage>
             </div>
         </div>

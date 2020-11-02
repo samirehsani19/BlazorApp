@@ -1,5 +1,16 @@
-﻿<h3>Create</h3>
+﻿@using BlazorApp.Server.Models
+@page "/diary/create"
+@inject NavigationManager uriHelper
+@inject HttpClient http
+<h3>Create</h3>
+<Form ButtonText="Create" diary="@diary" OnValidSubmit="@CreateDiary"></Form>
 
-@code {
-
+@code
+{
+    Diary diary = new Diary();
+    async Task CreateDiary()
+    {
+        await http.PostAsJsonAsync("api/v1.0/diary", diary);
+        uriHelper.NavigateTo("diary");
+    }
 }

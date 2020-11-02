@@ -3,8 +3,7 @@
 @inject HttpClient http
 @inject NavigationManager uriHelper
 <h3>Create</h3>
-
-<Form ButtonText="Create Todo" todo="@todo" OnValidSubmit="@CreateTodo" />
+<Form ButtonText="Create" todo="@todo" OnValidSubmit="@CreateTodo"></Form>
 
 @code {
     Todo todo = new Todo();
