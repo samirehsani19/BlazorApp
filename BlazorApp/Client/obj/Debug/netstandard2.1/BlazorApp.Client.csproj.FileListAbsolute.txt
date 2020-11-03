@@ -37,7 +37,6 @@ C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\Ra
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\Razor\_Imports.razor.g.cs
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\Properties\launchSettings.json
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\BlazorApp.Client.StaticWebAssets.xml
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\BlazorApp.Client.dll
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\BlazorApp.Client.pdb
@@ -243,7 +242,6 @@ C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\in
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\PEg9ghiKSWBTX0jq8pFDvv2Yvw92Y8W0ELtWrSE4fhA=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\PBU5INASuPqDlIS0ic0TMSDwIZQ6BIM6N0S0K5FhZHE=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\LqwA2Rpm96Ualk0IhLZar87kfRCyKHzHTeTt2jYhm7M=.hash
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\paU9a79FwESiy0oQAcTz1hfeH1_PzQbMHPzOTezpTN8=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\FJ_rEgcx6ljTxwbRXZSUGfrDKpVvOxHCSfNxbnXNn3M=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\Vio27NdWW1HmLCdcXVEyHpx4LnRfNjOlElipIlxM-uQ=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\6eWNJmObgA9g37KbjpD_lhTy18eoW5cLdTcnDGGojBU=.hash
@@ -257,7 +255,6 @@ C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\in
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\sMUxQEgnL-opNKBj6P9vNoOnnwb0545vj6DOruCVDcE=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\cKAZb7xh11kZxyizcq_t1c8646D5ZoQNvEwOg3z_DX8=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\czNf3btAeBW-vvID5LAfgcsNZ_GM3ssVuPaMflcg0rs=.hash
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\phVN2wQyHo7WzV5cB746DxUakXNvB7wceIMzS6TxGGo=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\3S0qzYaBEKOBXarzVLNzNAFXlwJr6nI3lFlYUpQTPH8=.hash
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\UC-3Rm1NkdNdlIrzYARo_dO-HDlS5mhPxo0IQv7kma8=.hash
@@ -387,9 +384,6 @@ C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\st
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\staticwebassets\BlazorApp.Client.StaticWebAssets.xml
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\BlazorApp.Client.dll
 C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\BlazorApp.Client.pdb
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\NqPx6x6t0gPf9utQAjvlklwHJWwcTPU15l-qojKvMr8=.hash
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\G0w-Azm3ckbhdiT3wo6VlT4F4VA4BA0hL3XupdUKPlA=.hash
-C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\TOsK25yvrKMxP92VUZ7NDfUqXmP2ryYdvmAanrMIc6E=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\Properties\launchSettings.json
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\BlazorApp.Client.StaticWebAssets.xml
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\BlazorApp.Client.dll
@@ -784,3 +778,12 @@ C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\2rlTMOwSi0ky5ADVOL49miMKuNy-OAF76xwAcnZ4EbU=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\z0fN4Y6NGquLfibCoOVoJKiMbZaawG8kIOweM_ghf2A=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\dIOX_G23Vnw86Og_7iP9CfRM9BivOsnnNjxd50xcMIM=.hash
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Diary\Form.razor.g.cs
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\BlazorApp.Client.RazorComponent.output.cache
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\Razor\Pages\Diary\Form.razor.g.cs
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\yjvyd9Ve22AD9Y4xq15Vt8KKa7M7g7gT7jpw76XCW9Q=.hash
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\_m9iDp57jCzwViGMc8I-UDXr0zIYIf9NYJkYbiL0Y8g=.hash
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\scopedcss\bundle\BlazorApp.Client.styles.css
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\oC8OrevvRdaNBPQ0n3fUsHvY2tAmfd-Yi7WD0soREzA=.hash
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\V8y-m2-RCj9F3Pz95kzAzNKgU2KOtxIagtJ4-L3Ynu8=.hash
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\rFmv7vAgWTHJ-xhS6XwagXWxCTOToR1bDXaClR-thaA=.hash

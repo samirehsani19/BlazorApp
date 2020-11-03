@@ -15,3 +15,4 @@ C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Shared\obj\Debug\netstandard2.1\
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Shared\obj\Debug\netstandard2.1\BlazorApp.Shared.csproj.CoreCompileInputs.cache
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Shared\obj\Debug\netstandard2.1\BlazorApp.Shared.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Shared\obj\Debug\netstandard2.1\BlazorApp.Shared.pdb
+C:\Users\seh\source\repos\BlazorApp\BlazorApp\Shared\obj\Debug\netstandard2.1\BlazorApp.Shared.csprojAssemblyReference.cache

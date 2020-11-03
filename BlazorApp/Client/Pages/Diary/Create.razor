@@ -1,12 +1,11 @@
 ﻿@using BlazorApp.Server.Models
 @page "/diary/create"
-@inject NavigationManager uriHelper
 @inject HttpClient http
+@inject NavigationManager uriHelper
 <h3>Create</h3>
 <Form ButtonText="Create" diary="@diary" OnValidSubmit="@CreateDiary"></Form>
 
-@code
-{
+@code {
     Diary diary = new Diary();
     async Task CreateDiary()
     {

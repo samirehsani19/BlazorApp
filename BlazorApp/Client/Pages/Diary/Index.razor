@@ -7,7 +7,7 @@
 <h3>Diary</h3>
 <small>Add thing to Diary list.</small>
 <div class="form-group">
-    <a class="btn btn-success" href="Diary/create"><i class="oi oi-plus"></i> Create New</a>
+    <a class="btn btn-success" href="diary/create"><i class="oi oi-plus"></i> Create New</a>
 </div>
 <br>
 @if (diaries == null)
@@ -59,7 +59,7 @@ else
         var diary = diaries.First(x => x.DiaryID == diaryId);
         if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {diary.Title}'s ({diary.DiaryID}) Record?"))
         {
-            await client.DeleteAsync($"api/v1.0/Diary/{diaryId}");
+            await client.DeleteAsync($"api/v1.0/diary/{diaryId}");
             await OnInitializedAsync();
         }
     }

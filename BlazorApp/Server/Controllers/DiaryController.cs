@@ -46,7 +46,7 @@ namespace BlazorApp.Server.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, $"Database faulure!");
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> Put(Diary diary)
         {
             _diaryRepo.Update(diary); 
@@ -60,7 +60,7 @@ namespace BlazorApp.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult>Delete(int id)
         {
-            var diary = _diaryRepo.GetDiaryByID(id);
+            var diary = await _diaryRepo.GetDiaryByID(id);
             if (diary==null)
             {
                 return NotFound();
