@@ -1,32 +1,7 @@
-﻿@*@page "/diary/edit/{diaryId:int}"
-    @inject HttpClient http
-    @inject NavigationManager uriHepler
-    @inject JSRuntime js
-    @using BlazorApp.Server.Models
-    <h3>Edit</h3>
-    <Form ButtonText="Update" diary="diary" OnValidSubmit="@EditDiary"></Form>
-
-    @code
-    {
-        [Parameter]public int diaryId { get; set; }
-        Diary diary = new Diary();
-        protected async override Task OnParametersSetAsync()
-        {
-            diary = await http.GetFromJsonAsync<Diary>($"api/v1.0/diary/{diaryId}");
-        }
-        async Task EditDiary()
-        {
-            await http.PutAsJsonAsync("api/v1.0/diary/", diary);
-            await js.InvokeVoidAsync("alert", "Updated successfully!");
-            uriHepler.NavigateTo("diary");
-        }
-    }*@
-
-@page "/diary/edit/{diaryId:int}"
+﻿@page "/diary/edit/{diaryId:int}"
 @inject HttpClient http
 @inject NavigationManager uriHelper
 @inject IJSRuntime js
-@using BlazorApp.Server.Models
 <h3>Edit</h3>
 <Form ButtonText="Update" diary="diary" OnValidSubmit="@EditDiary" />
 @code {

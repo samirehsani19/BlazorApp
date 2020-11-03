@@ -1,32 +1,4 @@
-﻿@*@using BlazorApp.Server.Models
-<EditForm Model="@diary" OnInvalidSubmit="@OnValidSubmit">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <div class="form-group">
-        <label>Date :</label>
-        <div>
-            <InputDate @bind-Value="@diary.Date"></InputDate>
-            <ValidationMessage For="@(()=> diary.Date)"></ValidationMessage>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Title :</label>
-        <div>
-            <InputText @bind-Value="@diary.Title"></InputText>
-            <ValidationMessage For="@(()=>diary.Title)"></ValidationMessage>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Description :</label>
-        <div>
-            <InputTextArea @bind-Value="@diary.Description"></InputTextArea>
-            <ValidationMessage For="@(()=>diary.Description)"></ValidationMessage>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success"> @ButtonText </button>
-</EditForm>*@
-
-@using BlazorApp.Server.Models
-<EditForm Model="@diary" OnValidSubmit="@OnValidSubmit">
+﻿<EditForm Model="@diary" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <div class="form-group">
         <label>Date :</label>
@@ -61,13 +33,3 @@
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 }
-
-
-
-
-
-@*@code{
-    [Parameter] public Diary diary { get; set; }
-    [Parameter] public string ButtonText { get; set; } = "Save";
-    [Parameter] public EventCallback OnValidSubmit { get; set; }
-}*@

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BlazorApp.Shared.Models;
 using System.Threading.Tasks;
 
 namespace BlazorApp.Server.Services.Repositories
@@ -14,10 +15,10 @@ namespace BlazorApp.Server.Services.Repositories
         {
         }
 
-        public virtual async Task<Models.Todo> GetTodoByID(int id)
+        public virtual async Task<Todo> GetTodoByID(int id)
         {
             _logger.LogInformation("Getting todos");
-            IQueryable<Models.Todo> query = _context.Todos.Where(x=> x.TodoID==id);
+            IQueryable<Todo> query = _context.Todos.Where(x=> x.TodoID==id);
             if (query == null)
             {
                 _logger.LogInformation("No todo list found in database");
@@ -25,10 +26,10 @@ namespace BlazorApp.Server.Services.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
-        public virtual async Task<Models.Todo[]> GetTodos()
+        public virtual async Task<Todo[]> GetTodos()
         {
             _logger.LogInformation("Getting todos");
-            IQueryable<Models.Todo> query = _context.Todos;
+            IQueryable<Todo> query = _context.Todos;
             if (query==null)
             {
                 _logger.LogInformation("No todo list found in database");
