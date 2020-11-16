@@ -1,0 +1,21 @@
+*.logs
+*.json
+*.Debug
+*.obj
+*appsettings.Development.json
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+appsettings.json
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+**/Migration
+*.bin
+*.dll
+*.cache
+*.pdb

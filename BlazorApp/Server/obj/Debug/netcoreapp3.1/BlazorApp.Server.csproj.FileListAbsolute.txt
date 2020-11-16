@@ -1,3 +1,10 @@
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.csprojAssemblyReference.cache
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.AssemblyInfoInputs.cache
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.AssemblyInfo.cs
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.csproj.CoreCompileInputs.cache
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.RazorAssemblyInfo.cache
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.RazorAssemblyInfo.cs
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Client.StaticWebAssets.xml
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorDebugProxy\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
@@ -231,13 +238,6 @@ C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\B
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Shared.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Client.pdb
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Shared.pdb
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.csprojAssemblyReference.cache
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.AssemblyInfoInputs.cache
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.AssemblyInfo.cs
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.csproj.CoreCompileInputs.cache
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.RazorAssemblyInfo.cache
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\BlazorApp.Server.RazorAssemblyInfo.cs
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\staticwebassets\BlazorApp.Server.StaticWebAssets.Manifest.cache
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\staticwebassets\BlazorApp.Server.StaticWebAssets.xml
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\obj\Debug\netcoreapp3.1\scopedcss\bundle\BlazorApp.Server.styles.css

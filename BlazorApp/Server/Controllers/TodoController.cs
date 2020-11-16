@@ -16,7 +16,7 @@ namespace BlazorApp.Server.Controllers
     [ApiController]
     public class TodoController : Controller
     {
-        private IHubContext<MainHub> hub;
+        private readonly IHubContext<MainHub> hub;
         private readonly ITodo _todoRepo;
         public TodoController(IHubContext<MainHub> hub, ITodo repo)
         {
