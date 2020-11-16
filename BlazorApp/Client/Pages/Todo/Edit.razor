@@ -1,20 +1,55 @@
 ﻿@page "/todo/edit/{todoId:int}"
 @inject HttpClient http
-@inject NavigationManager uriHelper
+@inject NavigationManager nav
 @inject IJSRuntime js
+@using Microsoft.AspNetCore.SignalR.Client
 <h3>Edit</h3>
 <Form ButtonText="Update" todo="todo" OnValidSubmit="@EditTodo" />
+
 @code {
     [Parameter] public int todoId { get; set; }
     Todo todo = new Todo();
-    protected async override Task OnParametersSetAsync()
+    private HubConnection hubConnection;
+
+
+    protected override async Task OnInitializedAsync()
     {
         todo = await http.GetFromJsonAsync<Todo>($"api/v1.0/todo/{todoId}");
+
+        hubConnection = new HubConnectionBuilder()
+        .WithUrl(nav.ToAbsoluteUri("/MainHub"))
+        .Build();
+        await hubConnection.StartAsync();
     }
-    async Task EditTodo()
+
+   // public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
+
+    public async Task EditTodo()
     {
-        await http.PutAsJsonAsync("api/v1.0/todo", todo);
-        await js.InvokeVoidAsync("alert", $"Updated Successfully!");
-        uriHelper.NavigateTo("todo");
+        nav.NavigateTo("todo");
+        await http.PutAsJsonAsync($"api/v1.0/todo", todo);
+        //if (IsConnected) await SendMessage();
     }
+
+    //Task SendMessage() => hubConnection.SendAsync("SendMessage");
+
+
+    public async ValueTask Dispose()
+    {
+        await hubConnection.DisposeAsync();
+    }
+
+
+
+
+    //protected async override Task OnParametersSetAsync()
+    //{
+    //    todo = await http.GetFromJsonAsync<Todo>($"api/v1.0/todo/{todoId}");
+    //}
+    //async Task EditTodo()
+    //{
+    //    await http.PutAsJsonAsync($"api/v1.0/todo", todo);
+    //    await js.InvokeVoidAsync("alert", $"Updated Successfully!");
+    //    uriHelper.NavigateTo("todo");
+    //}
 }

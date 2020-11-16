@@ -1,7 +1,8 @@
 ﻿@page "/todo"
 @inject HttpClient client
 @inject IJSRuntime js
-
+@inject NavigationManager nav
+@using Microsoft.AspNetCore.SignalR.Client
 
 <h3>Todo</h3>
 <small>Add thing to todo list.</small>
@@ -48,10 +49,43 @@ else
 }
 @code {
     Todo[] todos { get; set; }
+    private HubConnection hubConnection;
     protected override async Task OnInitializedAsync()
     {
-        todos = await client.GetFromJsonAsync<Todo[]>("api/v1.0/Todo");
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(nav.ToAbsoluteUri("/MainHub"))
+            .Build();
+        hubConnection.On("ReceivedMessage", () =>
+        {
+            CallLoadData();
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
+        await LoadData();
     }
+
+
+    private void CallLoadData()
+    {
+        Task.Run(async () =>
+        {
+            await LoadData();
+        });
+
+    }
+
+    protected async Task LoadData()
+    {
+        todos = await client.GetFromJsonAsync<Todo[]>("api/v1.0/Todo");
+        StateHasChanged();
+    }
+
+    public async ValueTask Dispose()
+    {
+        await hubConnection.DisposeAsync();
+    }
+
 
     async Task Delete(int todoId)
     {

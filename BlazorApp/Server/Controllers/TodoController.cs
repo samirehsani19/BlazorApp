@@ -7,6 +7,8 @@ using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Server.Services.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using BlazorApp.Server.Hubs;
 
 namespace BlazorApp.Server.Controllers
 {
@@ -14,8 +16,13 @@ namespace BlazorApp.Server.Controllers
     [ApiController]
     public class TodoController : Controller
     {
+        private IHubContext<MainHub> hub;
         private readonly ITodo _todoRepo;
-        public TodoController(ITodo repo) => _todoRepo = repo;
+        public TodoController(IHubContext<MainHub> hub, ITodo repo)
+        {
+            this.hub = hub;
+            _todoRepo = repo;
+        }
        
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -37,17 +44,23 @@ namespace BlazorApp.Server.Controllers
            _todoRepo.Add(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok(todo.Title);
             }
             return StatusCode(StatusCodes.Status500InternalServerError,$"Todo with title: {todo.Title} could not be created");
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Put(Todo todo)
+
+        [HttpPut()]
+        public async Task<IActionResult>Update(Todo todo)
         {
+            //var old = await _todoRepo.GetTodoByID(id);
+            //if (old == null) return NotFound();
+
             _todoRepo.Update(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok(todo.Title);
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be updated");
@@ -60,6 +73,7 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Delete(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok($"Todo with id {id} deleted successfully!");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with id: {id} could not be deleted");
