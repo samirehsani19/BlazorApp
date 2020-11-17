@@ -1,20 +1,4 @@
 ﻿@page "/todo/edit/{todoId:int}"
-@inject HttpClient http
-@inject NavigationManager uriHelper
-@inject IJSRuntime js
+
 <h3>Edit</h3>
 <Form ButtonText="Update" todo="todo" OnValidSubmit="@EditTodo" />
-@code {
-    [Parameter] public int todoId { get; set; }
-    Todo todo = new Todo();
-    protected async override Task OnParametersSetAsync()
-    {
-        todo = await http.GetFromJsonAsync<Todo>($"api/v1.0/todo/{todoId}");
-    }
-    async Task EditTodo()
-    {
-        await http.PutAsJsonAsync("api/v1.0/todo", todo);
-        await js.InvokeVoidAsync("alert", $"Updated Successfully!");
-        uriHelper.NavigateTo("todo");
-    }
-}

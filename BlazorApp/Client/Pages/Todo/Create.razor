@@ -1,0 +1,34 @@
+﻿@page "/todo/create"
+@inject HttpClient http
+@inject NavigationManager nav
+@using Microsoft.AspNetCore.SignalR.Client
+
+<h3>Create</h3>
+<Form ButtonText="Create" todo="@todo" OnValidSubmit="@CreateTodo"></Form>
+
+@code {
+    Todo todo = new Todo();
+
+    private HubConnection hubConnection;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+        .WithUrl(nav.ToAbsoluteUri("/MainHub"))
+        .Build();
+        await hubConnection.StartAsync();
+    }
+
+    async Task CreateTodo()
+    {
+        await http.PostAsJsonAsync("api/v1.0/todo", todo);
+        nav.NavigateTo("todo");
+    }
+
+    public async ValueTask Dispose()
+    {
+        await hubConnection.DisposeAsync();
+    }
+
+}

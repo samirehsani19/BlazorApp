@@ -12,8 +12,8 @@ namespace BlazorApp.Server.Controllers
     [ApiController]
     public class TodoController : Controller
     {
-        private readonly ITodo _todoRepo;
         private readonly IHubContext<MainHub> hub;
+        private readonly ITodo _todoRepo;
         public TodoController(IHubContext<MainHub> hub, ITodo repo)
         {
             this.hub = hub;
@@ -24,7 +24,6 @@ namespace BlazorApp.Server.Controllers
         public async Task<IActionResult> Index()
         {
             var todo = await _todoRepo.GetTodos();
-            await hub.Clients.All.SendAsync("getTodos", todo);
             return Ok(todo);
         }
 
@@ -32,7 +31,6 @@ namespace BlazorApp.Server.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var todo = await _todoRepo.GetTodoByID(id);
-            await hub.Clients.All.SendAsync("getTodo", todo);
             return Ok(todo);
         }
 
@@ -42,19 +40,21 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Add(todo);
             if (await _todoRepo.Save())
             {
-                await hub.Clients.All.SendAsync("todoAdded", todo);
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok(todo.Title);
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be created");
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Put(Todo todo)
+
+        [HttpPut()]
+        public async Task<IActionResult> Update(Todo todo)
         {
             _todoRepo.Update(todo);
             if (await _todoRepo.Save())
             {
                 await hub.Clients.All.SendAsync("todoUpdated", todo);
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok(todo.Title);
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be updated");
@@ -67,7 +67,7 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Delete(todo);
             if (await _todoRepo.Save())
             {
-                await hub.Clients.All.SendAsync("todoDeleted", todo);
+                await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok($"Todo with id {id} deleted successfully!");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with id: {id} could not be deleted");

@@ -1,7 +1,9 @@
 ﻿@page "/"
-@inject NavigationManager nav 
+@inject NavigationManager nav
 
-@code{     
-    protected override void OnInitialized()=> nav.NavigateTo("/todo");
+@code{protected override void OnInitialized()
+    {
+        nav.NavigateTo("todo");
+    }
 }
 

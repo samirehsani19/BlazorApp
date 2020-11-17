@@ -1,5 +1,4 @@
-﻿using BlazorApp.Shared.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using System.Linq;
@@ -11,60 +10,18 @@ namespace BlazorApp.Client.Pages.Todos
 {
     public partial class Todos
     {
-        [Inject] HttpClient client { get; set; }
-        [Inject] IJSRuntime js { get; set; }
-        [Inject] NavigationManager nav { get; set; }
-        Todo[] todos { get; set; }
+        BlazorApp.Shared.Models.Todo[] todos { get; set; }
+        [Inject]NavigationManager Nav { get; set; }
+        [Inject] HttpClient Client { get; set; }
+        [Inject]JSRuntime Js { get; set; }
         private HubConnection hubConnection;
-
-        //protected override async Task OnInitializedAsync()
-        //{
-        //    hubConnection = new HubConnectionBuilder()
-        //        .WithUrl(nav.ToAbsoluteUri("/MainHub"))
-        //        .Build();
-
-        //    await hubConnection.StartAsync();
-
-        //    if (IsConnected)
-        //        hubConnection.On<Todo[]>("todoAdded", x =>
-        //        {
-        //            todos = x;
-        //            StateHasChanged();
-        //        });
-
-
-        //}
-
-
-
-
-        //public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
-        //protected override async Task OnInitializedAsync()
-        //{
-        //    hubConnection = new HubConnectionBuilder()
-        //        .WithUrl(nav.ToAbsoluteUri("/MainHub"))
-        //        .Build();
-
-        //    await hubConnection.StartAsync();
-
-        //    if(IsConnected)
-        //    hubConnection.On<Todo>("todoAdded", async x =>
-        //    {
-        //        todos = await client.GetFromJsonAsync<Todo[]>("api/v1.0/Todo");
-        //        StateHasChanged();
-        //    });
-
-
-        //}
-
-
 
         protected override async Task OnInitializedAsync()
         {
             hubConnection = new HubConnectionBuilder()
-                .WithUrl(nav.ToAbsoluteUri("/MainHub"))
+                .WithUrl(Nav.ToAbsoluteUri("/MainHub"))
                 .Build();
-            hubConnection.On("getTodos", () =>
+            hubConnection.On("ReceivedMessage", () =>
             {
                 CallLoadData();
                 StateHasChanged();
@@ -73,30 +30,37 @@ namespace BlazorApp.Client.Pages.Todos
             await hubConnection.StartAsync();
             await LoadData();
         }
+
+
         private void CallLoadData()
         {
-            Task.Run(async () => await LoadData());
-        }
-
-        private async Task LoadData()
-        {
-            todos = await client.GetFromJsonAsync<Todo[]>("api/v1.0/Todo");
-            StateHasChanged();
-        }
-
-        async Task Delete(int todoId)
-        {
-            var todo = todos.First(x => x.TodoID == todoId);
-            if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
+            Task.Run(async () =>
             {
-                await client.DeleteAsync($"api/v1.0/Todo/{todoId}");
-                await OnInitializedAsync();
-            }
+                await LoadData();
+            });
+
+        }
+
+        protected async Task LoadData()
+        {
+            todos = await Client.GetFromJsonAsync<BlazorApp.Shared.Models.Todo[]>("api/v1.0/Todo");
+            StateHasChanged();
         }
 
         public async ValueTask Dispose()
         {
             await hubConnection.DisposeAsync();
+        }
+
+
+        async Task Delete(int todoId)
+        {
+            var todo = todos.First(x => x.TodoID == todoId);
+            if (await Js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
+            {
+                await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
+                await OnInitializedAsync();
+            }
         }
 
     }

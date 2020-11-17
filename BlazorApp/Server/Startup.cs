@@ -26,12 +26,14 @@ namespace BlazorApp.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddSignalR();
             services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
-            services.AddResponseCompression(op =>
+            services.AddResponseCompression(opts =>
             {
-                op.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/octet-stream" });
             });
             services.AddRazorPages();
             services.AddScoped<IUser, UserRepository>();
@@ -65,7 +67,7 @@ namespace BlazorApp.Server
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-                endpoints.MapHub<MainHub>("MainHub");
+                endpoints.MapHub<MainHub>("/MainHub");
                 endpoints.MapFallbackToFile("index.html");
             });
         }
