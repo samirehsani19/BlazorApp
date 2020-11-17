@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorApp.Shared.Models;
+﻿using BlazorApp.Server.Hubs;
 using BlazorApp.Server.Services.Interfaces;
-using BlazorApp.Server.Services.Repositories;
+using BlazorApp.Shared.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 
 namespace BlazorApp.Server.Controllers
 {
@@ -15,12 +13,18 @@ namespace BlazorApp.Server.Controllers
     public class TodoController : Controller
     {
         private readonly ITodo _todoRepo;
-        public TodoController(ITodo repo) => _todoRepo = repo;
-       
+        private readonly IHubContext<MainHub> hub;
+        public TodoController(IHubContext<MainHub> hub, ITodo repo)
+        {
+            this.hub = hub;
+            _todoRepo = repo;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var todo = await _todoRepo.GetTodos();
+            await hub.Clients.All.SendAsync("getTodos", todo);
             return Ok(todo);
         }
 
@@ -28,18 +32,20 @@ namespace BlazorApp.Server.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var todo = await _todoRepo.GetTodoByID(id);
+            await hub.Clients.All.SendAsync("getTodo", todo);
             return Ok(todo);
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(Todo todo)
         {
-           _todoRepo.Add(todo);
+            _todoRepo.Add(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("todoAdded", todo);
                 return Ok(todo.Title);
             }
-            return StatusCode(StatusCodes.Status500InternalServerError,$"Todo with title: {todo.Title} could not be created");
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be created");
         }
 
         [HttpPut]
@@ -48,6 +54,7 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Update(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("todoUpdated", todo);
                 return Ok(todo.Title);
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with title: {todo.Title} could not be updated");
@@ -60,6 +67,7 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Delete(todo);
             if (await _todoRepo.Save())
             {
+                await hub.Clients.All.SendAsync("todoDeleted", todo);
                 return Ok($"Todo with id {id} deleted successfully!");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Todo with id: {id} could not be deleted");

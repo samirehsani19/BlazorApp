@@ -1,9 +1,7 @@
 ﻿using BlazorApp.Server.Services.Interfaces;
+using BlazorApp.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using BlazorApp.Shared.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +17,7 @@ namespace BlazorApp.Server.Services.Repositories
         {
             _logger.LogInformation("Getting Diaries");
             IQueryable<Diary> query = _context.Diaries;
-            if (query==null)
+            if (query == null)
             {
                 _logger.LogInformation("No dairy found in database");
             }
@@ -29,7 +27,7 @@ namespace BlazorApp.Server.Services.Repositories
         public virtual async Task<Diary> GetDiaryByID(int id)
         {
             _logger.LogInformation("Getting Diaries");
-            IQueryable<Diary> query = _context.Diaries.Where(x=> x.DiaryID==id);
+            IQueryable<Diary> query = _context.Diaries.Where(x => x.DiaryID == id);
             if (query == null)
             {
                 _logger.LogInformation("No dairy found in database");

@@ -1,0 +1,45 @@
+﻿@page "/todo"
+
+<h3>Todo</h3>
+<small>Add thing to todo list.</small>
+<div class="form-group">
+    <a class="btn btn-success" href="Todo/create"><i class="oi oi-plus"></i> Create New</a>
+</div>
+<br>
+@if (todos == null)
+{
+    <text>Loading todos... </text>
+}
+else if (todos.Length == 0)
+{
+    <text>No Records Found.</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in todos)
+            {
+                <tr>
+                    <td>@item.TodoID</td>
+                    <td>@item.Date</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a class="btn btn-success" href="todo/edit/@item.TodoID">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => Delete(item.TodoID))">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Shared.Models;
-using BlazorApp.Server.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace BlazorApp.Server.Controllers
 {
@@ -23,10 +20,10 @@ namespace BlazorApp.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult>GetByID(int id)
+        public async Task<IActionResult> GetByID(int id)
         {
-            var diary=await _diaryRepo.GetDiaryByID(id);
-            if (diary==null)
+            var diary = await _diaryRepo.GetDiaryByID(id);
+            if (diary == null)
             {
                 return NotFound($"Diary with id: {id} could not be found");
             }
@@ -36,8 +33,8 @@ namespace BlazorApp.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Diary diary)
         {
-            if (diary==null) { return StatusCode(StatusCodes.Status400BadRequest, "Model is empty"); }
-            
+            if (diary == null) { return StatusCode(StatusCodes.Status400BadRequest, "Model is empty"); }
+
             _diaryRepo.Add(diary);
             if (await _diaryRepo.Save())
             {
@@ -49,8 +46,8 @@ namespace BlazorApp.Server.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(Diary diary)
         {
-            _diaryRepo.Update(diary); 
-            if(await _diaryRepo.Save())
+            _diaryRepo.Update(diary);
+            if (await _diaryRepo.Save())
             {
                 return Ok($"Diary updated successfully");
             }
@@ -58,10 +55,10 @@ namespace BlazorApp.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult>Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var diary = await _diaryRepo.GetDiaryByID(id);
-            if (diary==null)
+            if (diary == null)
             {
                 return NotFound();
             }
@@ -72,7 +69,7 @@ namespace BlazorApp.Server.Controllers
                 return Ok($"Diary with id: {id} deleted successfully");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Database failure");
-            
+
         }
     }
 }

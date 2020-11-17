@@ -1,3 +1,4 @@
+using BlazorApp.Server.Hubs;
 using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Server.Services.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 using System.Linq;
 
 namespace BlazorApp.Server
@@ -26,11 +26,14 @@ namespace BlazorApp.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSignalR();
             services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddResponseCompression(op =>
+            {
+                op.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
+            });
             services.AddRazorPages();
-            //services.AddServerSideBlazor();
             services.AddScoped<IUser, UserRepository>();
             services.AddScoped<ITodo, TodoRepository>();
             services.AddScoped<IDiary, DiaryRepository>();
@@ -42,6 +45,7 @@ namespace BlazorApp.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseResponseCompression();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,6 +65,7 @@ namespace BlazorApp.Server
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapHub<MainHub>("MainHub");
                 endpoints.MapFallbackToFile("index.html");
             });
         }
