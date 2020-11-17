@@ -4,6 +4,7 @@ using Microsoft.JSInterop;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace BlazorApp.Client.Pages.Todos
@@ -11,20 +12,18 @@ namespace BlazorApp.Client.Pages.Todos
     public partial class Todos
     {
         BlazorApp.Shared.Models.Todo[] todos { get; set; }
-        [Inject]NavigationManager Nav { get; set; }
+        [Inject] NavigationManager Nav { get; set; }
         [Inject] HttpClient Client { get; set; }
-        [Inject]JSRuntime Js { get; set; }
         private HubConnection hubConnection;
-
+        [Inject] IJSRuntime Js { get; set; }
         protected override async Task OnInitializedAsync()
         {
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(Nav.ToAbsoluteUri("/MainHub"))
                 .Build();
-            hubConnection.On("ReceivedMessage", () =>
+            hubConnection.On("ReceivedMessage", ()=>
             {
-                CallLoadData();
-                StateHasChanged();
+                CallLoadData(); 
             });
 
             await hubConnection.StartAsync();
@@ -59,7 +58,7 @@ namespace BlazorApp.Client.Pages.Todos
             if (await Js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
             {
                 await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
-                await OnInitializedAsync();
+            await OnInitializedAsync();
             }
         }
 

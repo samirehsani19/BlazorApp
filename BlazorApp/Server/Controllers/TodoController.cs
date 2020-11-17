@@ -53,7 +53,6 @@ namespace BlazorApp.Server.Controllers
             _todoRepo.Update(todo);
             if (await _todoRepo.Save())
             {
-                await hub.Clients.All.SendAsync("todoUpdated", todo);
                 await hub.Clients.All.SendAsync("ReceivedMessage");
                 return Ok(todo.Title);
             }
