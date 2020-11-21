@@ -1,7 +1,9 @@
-﻿using BlazorApp.Server.Services.Interfaces;
+﻿using BlazorApp.Server.Hubs;
+using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Shared.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
 namespace BlazorApp.Server.Controllers
@@ -11,7 +13,12 @@ namespace BlazorApp.Server.Controllers
     public class DiaryController : Controller
     {
         private readonly IDiary _diaryRepo;
-        public DiaryController(IDiary d) => _diaryRepo = d;
+        private readonly IHubContext<MainHub> hub;
+        public DiaryController(IHubContext<MainHub> h, IDiary d)
+        {
+            _diaryRepo = d;
+            this.hub = h;
+        }
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -38,6 +45,7 @@ namespace BlazorApp.Server.Controllers
             _diaryRepo.Add(diary);
             if (await _diaryRepo.Save())
             {
+                await hub.Clients.All.SendAsync("UpdateDiary");
                 return Ok($"Diary with title {diary.Title} saved succecfully");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Database faulure!");
@@ -49,7 +57,9 @@ namespace BlazorApp.Server.Controllers
             _diaryRepo.Update(diary);
             if (await _diaryRepo.Save())
             {
+                await hub.Clients.All.SendAsync("UpdateDiary");
                 return Ok($"Diary updated successfully");
+
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Database failure");
         }
@@ -66,6 +76,7 @@ namespace BlazorApp.Server.Controllers
             _diaryRepo.Delete(diary);
             if (await _diaryRepo.Save())
             {
+                await hub.Clients.All.SendAsync("UpdateDiary");
                 return Ok($"Diary with id: {id} deleted successfully");
             }
             return StatusCode(StatusCodes.Status500InternalServerError, $"Database failure");

@@ -10,6 +10,10 @@ namespace BlazorApp.Server
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Todo> Todos { get; set; }
         public virtual DbSet<Diary> Diaries { get; set; }
+        public DataContext()
+        {
+                
+        }
 
         protected override void OnModelCreating(ModelBuilder model)
         {

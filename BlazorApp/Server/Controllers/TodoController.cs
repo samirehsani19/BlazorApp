@@ -21,7 +21,7 @@ namespace BlazorApp.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetAll()
         {
             var todo = await _todoRepo.GetTodos();
             return Ok(todo);
