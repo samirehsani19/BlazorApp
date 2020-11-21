@@ -11,7 +11,7 @@
         <div>
             <label>Title :</label>
             <div>
-                <InputText @bind-Value="@diary.Title" />
+                <InputText @bind-Value="@diary.Title" style="width:80%"></InputText>
                 <ValidationMessage For="@(() => diary.Title)" />
             </div>
         </div>
@@ -20,7 +20,7 @@
         <div>
             <label>Description :</label>
             <div>
-                <InputTextArea @bind-Value="@diary.Description"></InputTextArea>
+                <InputTextArea @bind-Value="@diary.Description" style="width:80%; height:100px"></InputTextArea>
                 <ValidationMessage For="@(()=> diary.Description)"></ValidationMessage>
             </div>
         </div>
@@ -28,8 +28,3 @@
     <button type="submit" class="btn btn-success"> @ButtonText </button>
 </EditForm>
 
-@code {
-    [Parameter] public Diary diary { get; set; }
-    [Parameter] public string ButtonText { get; set; } = "Save";
-    [Parameter] public EventCallback OnValidSubmit { get; set; }
-}

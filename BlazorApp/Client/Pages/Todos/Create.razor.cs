@@ -11,15 +11,6 @@ namespace BlazorApp.Client.Pages.Todos
         [Inject] NavigationManager Nav { get; set; }
         [Inject] HttpClient Client { get; set; }
         BlazorApp.Shared.Models.Todo todo = new BlazorApp.Shared.Models.Todo();
-        private HubConnection hubConnection;
-
-        protected override async Task OnInitializedAsync()
-        {
-            hubConnection = new HubConnectionBuilder()
-            .WithUrl(Nav.ToAbsoluteUri("/MainHub"))
-            .Build();
-            await hubConnection.StartAsync();
-        }
 
         async Task CreateTodo()
         {
@@ -27,9 +18,6 @@ namespace BlazorApp.Client.Pages.Todos
             Nav.NavigateTo("todo");
         }
 
-        public async ValueTask Dispose()
-        {
-            await hubConnection.DisposeAsync();
-        }
+
     }
 }

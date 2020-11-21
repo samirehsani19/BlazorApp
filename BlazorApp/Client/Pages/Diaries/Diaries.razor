@@ -1,14 +1,16 @@
-﻿@page "/todo"
-<h3>Todo</h3>
+﻿@page "/diary"
+
+
+<h3>Diary</h3>
 <div class="form-group">
-    <a class="btn btn-success" href="Todo/create"><i class="oi oi-plus"></i> Create New</a>
+    <a class="btn btn-success" href="diary/create"><i class="oi oi-plus"></i> Create New</a>
 </div>
 <br>
-@if (todos == null)
+@if (AllDiaries == null)
 {
-    <text>Loading todos... </text>
+    <text>Loading diaries... </text>
 }
-else if (todos.Length == 0)
+else if (AllDiaries.Length == 0)
 {
     <text>No Records Found.</text>
 }
@@ -25,16 +27,16 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in todos)
+            @foreach (var item in AllDiaries)
             {
                 <tr>
-                    <td>@item.TodoID</td>
+                    <td>@item.DiaryID</td>
                     <td>@item.Date</td>
                     <td>@item.Title</td>
                     <td>@item.Description</td>
                     <td>
-                        <a class="btn btn-success" href="todo/edit/@item.TodoID" style="width:70px">Edit</a>
-                        <button class="btn btn-danger" @onclick="@(() => Delete(item.TodoID))" style="width:70px">Delete</button>
+                        <a class="btn btn-success" href="diary/edit/@item.DiaryID" style="width:70px">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => Delete(item.DiaryID))" style="width:70px">Delete</button>
                     </td>
                 </tr>
             }

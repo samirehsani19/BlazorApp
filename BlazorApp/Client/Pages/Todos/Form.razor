@@ -11,7 +11,7 @@
         <div>
             <label>Title :</label>
             <div>
-                <InputText @bind-Value="@todo.Title" />
+                <InputText @bind-Value="@todo.Title" style="width:80%"></InputText>
                 <ValidationMessage For="@(() => todo.Title)" />
             </div>
         </div>
@@ -20,15 +20,10 @@
         <div>
             <label>Description :</label>
             <div>
-                <InputTextArea @bind-Value="@todo.Description"></InputTextArea>
+                <InputTextArea @bind-Value="@todo.Description" style="width:80%; height:100px"></InputTextArea>
                 <ValidationMessage For="@(()=> todo.Description)"></ValidationMessage>
             </div>
         </div>
     </div>
     <button type="submit" class="btn btn-success"> @ButtonText </button>
 </EditForm>
-@code {
-    [Parameter] public Todo todo { get; set; }
-    [Parameter] public string ButtonText { get; set; } = "Save";
-    [Parameter] public EventCallback OnValidSubmit { get; set; }
-}
