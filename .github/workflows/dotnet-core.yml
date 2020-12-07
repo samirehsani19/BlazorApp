@@ -34,7 +34,7 @@ jobs:
       uses: azure/appservice-actions/webapp@master
       with: 
         app-name: samirapp
-        publish-profile: ${{ SAMIRAPPCONNECTION }}   
+        publish-profile: ${{ secrets.SAMIRAPPCONNECTION }}   
         
         
         
