@@ -24,17 +24,17 @@ jobs:
     - name: Runing Unit Tests
       run: dotnet test --no-restore --verbosity normal
       
-  deploy:
-    needs: build
-    name: Deploy App
-    runs-on: ubuntu-latest
+  ##deploy:
+    ##needs: build
+    ##name: Deploy App
+    ##runs-on: ubuntu-latest
 
-    steps:
-    - name: deploy to azure web app
-      uses: azure/appservice-actions/webapp@master
-      with: 
-        app-name: samirapp
-        publish-profile: ${{ secrets.SAMIRAPPCONNECTION }}   
+    ##steps:
+    ##- name: deploy to azure web app
+      ##uses: azure/appservice-actions/webapp@master
+      ##with: 
+        ##app-name: samirapp
+        ##publish-profile: ${{ secrets.SAMIRAPPCONNECTION }}   
         
         
         
