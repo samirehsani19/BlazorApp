@@ -4,7 +4,6 @@ using Microsoft.JSInterop;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace BlazorApp.Client.Pages.Todos
@@ -21,9 +20,9 @@ namespace BlazorApp.Client.Pages.Todos
             hubConnection = new HubConnectionBuilder()
                 .WithUrl(Nav.ToAbsoluteUri("/MainHub"))
                 .Build();
-            hubConnection.On("ReceivedMessage", ()=>
+            hubConnection.On("ReceivedMessage", () =>
             {
-                CallLoadData(); 
+                CallLoadData();
             });
 
             await hubConnection.StartAsync();
@@ -58,7 +57,7 @@ namespace BlazorApp.Client.Pages.Todos
             if (await Js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
             {
                 await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
-            await OnInitializedAsync();
+                await OnInitializedAsync();
             }
         }
 

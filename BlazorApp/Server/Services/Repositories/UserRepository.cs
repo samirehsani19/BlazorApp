@@ -11,6 +11,13 @@ namespace BlazorApp.Server.Services.Repositories
     {
         public UserRepository(DataContext context, ILogger logger) : base(context, logger) { }
 
+        public async Task<User> GetUserByEmail(string email)
+        {
+            _logger.LogInformation($"Getting user by email: {email}");
+            if (string.IsNullOrWhiteSpace(email)) _logger.LogInformation("Email is not valid");
+            return await _context.Users.FirstOrDefaultAsync(x=>x.Email==email);
+        }
+
         public virtual async Task<User> GetUserByID(int id)
         {
             _logger.LogInformation($"Getting user by id: {id}");

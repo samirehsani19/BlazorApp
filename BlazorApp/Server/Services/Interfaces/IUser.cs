@@ -7,5 +7,6 @@ namespace BlazorApp.Server.Services.Interfaces
     {
         Task<User[]> GetUsers();
         Task<User> GetUserByID(int id);
+        Task<User> GetUserByEmail(string email);
     }
 }

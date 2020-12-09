@@ -1,10 +1,8 @@
 using BlazorApp.Server;
 using BlazorApp.Server.Controllers;
 using BlazorApp.Server.Hubs;
-using BlazorApp.Server.Services.Interfaces;
 using BlazorApp.Server.Services.Repositories;
 using BlazorApp.Shared.Models;
-using Castle.Core.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -12,7 +10,6 @@ using Moq;
 using Moq.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BlazorAppTests
@@ -28,19 +25,19 @@ namespace BlazorAppTests
             var logger = Mock.Of<ILogger<TodoRepository>>();
             var repo = new TodoRepository(context.Object, logger);
             var hub = new Mock<IHubContext<MainHub>>();
-            
+
             var controller = new TodoController(hub.Object, repo);
             var result = await controller.GetAll();
 
 
             var content = result as OkObjectResult;
-            Todo [] data = (Todo[])content.Value;
+            Todo[] data = (Todo[])content.Value;
 
             Assert.True(data.Length > 0);
-            
+
         }
 
-        public List<Todo>GetTodos()
+        public List<Todo> GetTodos()
         {
             return new List<Todo>
             {

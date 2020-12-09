@@ -1,0 +1,22 @@
+﻿@page "/user"
+
+<EditForm Model="@UserData" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label>Email :</label>
+        <div>
+            <InputText @bind-Value="@UserData.Email" />
+            <ValidationMessage For="@(() => UserData.Email)" />
+        </div>
+    </div>
+    <div class="form-group ">
+        <div>
+            <label>Password :</label>
+            <div>
+                <InputText @bind-Value="@UserData.Password"></InputText>
+                <ValidationMessage For="@(() => UserData.Password)" />
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-success" @onclick="@(() => LogIn())">Submit</button>
+</EditForm>

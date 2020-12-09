@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace BlazorApp.Server
@@ -41,7 +42,6 @@ namespace BlazorApp.Server
             services.AddScoped<IDiary, DiaryRepository>();
             services.AddScoped<IRepository, Repository>();
             services.AddSingleton<ILogger, Logger<ILogger>>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

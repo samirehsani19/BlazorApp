@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -13,10 +11,10 @@ namespace BlazorApp.Client.Pages.Diaries
     public partial class Diaries
     {
         BlazorApp.Shared.Models.Diary[] AllDiaries { get; set; }
-        [Inject]HttpClient Client { get; set; }
+        [Inject] HttpClient Client { get; set; }
         [Inject] IJSRuntime Js { get; set; }
         [Inject] NavigationManager Nav { get; set; }
-        private  HubConnection Hub;
+        private HubConnection Hub;
 
         protected override async Task OnInitializedAsync()
         {

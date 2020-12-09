@@ -14,10 +14,10 @@ namespace BlazorApp.Shared.Models
         [RegularExpression(@"^[a-zA-Z]{2, 20}$", ErrorMessage = "Please choose a valid name")]
         public string LastName { get; set; }
         [Required]
-        [RegularExpression(@"^[a-z0-9A-Z]{5, 30}.(com | se)$", ErrorMessage = "Please choose a valid Email")]
+        //[RegularExpression(@"^[a-z0-9A-Z]{5, 30}.(com | se)$", ErrorMessage = "Please enter a valid Email")]
         public string Email { get; set; }
         [Required]
-        [MinLength(6, ErrorMessage = "Please choose a longer password")]
+        //[MinLength(6, ErrorMessage = "Please enter a valid password")]
         public string Password { get; set; }
         public ICollection<Todo> Todos { get; set; }
         public ICollection<Diary> Diaries { get; set; }

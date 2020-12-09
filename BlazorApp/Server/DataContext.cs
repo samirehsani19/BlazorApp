@@ -12,7 +12,7 @@ namespace BlazorApp.Server
         public virtual DbSet<Diary> Diaries { get; set; }
         public DataContext()
         {
-                
+
         }
 
         protected override void OnModelCreating(ModelBuilder model)
