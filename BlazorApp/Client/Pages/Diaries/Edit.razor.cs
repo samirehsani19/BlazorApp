@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorApp.Client.ToastService;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ namespace BlazorApp.Client.Pages.Diaries
         [Inject] IJSRuntime Js { get; set; }
         [Inject] NavigationManager Nav { get; set; }
         [Inject] HttpClient Client { get; set; }
+        [Inject] ToastService.ToastService ToastService { get; set; }
         BlazorApp.Shared.Models.Diary diary = new BlazorApp.Shared.Models.Diary();
         protected async override Task OnParametersSetAsync()
         {
@@ -19,9 +22,17 @@ namespace BlazorApp.Client.Pages.Diaries
         }
         async Task EditDiary()
         {
-            await Client.PutAsJsonAsync("api/v1.0/diary", diary);
-            await Js.InvokeVoidAsync("alert", $"Updated Successfully!");
-            Nav.NavigateTo("diary");
+            var result = await Client.PutAsJsonAsync("api/v1.0/diary", diary);
+            if (result.StatusCode ==HttpStatusCode.OK)
+            {
+                ToastService.ShowToast("Updated Successfully", ToastLevel.Success);
+                Nav.NavigateTo("diary");
+            }
+            else
+            {
+                ToastService.ShowToast("update failed", ToastLevel.Error);
+            }
+            //await Js.InvokeVoidAsync("alert", $"Updated Successfully!");
         }
     }
 }

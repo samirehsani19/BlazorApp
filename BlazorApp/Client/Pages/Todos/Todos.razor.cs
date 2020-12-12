@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorApp.Client.ToastService;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace BlazorApp.Client.Pages.Todos
         [Inject] HttpClient Client { get; set; }
         private HubConnection hubConnection;
         [Inject] IJSRuntime Js { get; set; }
+        [Inject] ToastService.ToastService ToastService { get; set; }
         protected override async Task OnInitializedAsync()
         {
             hubConnection = new HubConnectionBuilder()
@@ -56,7 +58,16 @@ namespace BlazorApp.Client.Pages.Todos
             var todo = todos.First(x => x.TodoID == todoId);
             if (await Js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
             {
-                await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
+                var result= await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
+                if (result.IsSuccessStatusCode)
+                {
+                    ToastService.ShowToast("Deleted Successfully", ToastLevel.Success);
+                    Nav.NavigateTo("diary");
+                }
+                else
+                {
+                    ToastService.ShowToast("Failed to delete", ToastLevel.Error);
+                }
                 await OnInitializedAsync();
             }
         }

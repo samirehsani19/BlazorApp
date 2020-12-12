@@ -1,9 +1,10 @@
 ﻿@page "/"
-@inject NavigationManager nav
+    @inject NavigationManager nav
+    @inject ToastService toastService
 
 @code{protected override void OnInitialized()
-    {
-        nav.NavigateTo("user");
+        {
+            nav.NavigateTo("user");
+        }
     }
-}
 
