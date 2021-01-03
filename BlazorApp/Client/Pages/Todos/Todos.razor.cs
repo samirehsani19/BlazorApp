@@ -1,4 +1,5 @@
 ﻿using BlazorApp.Client.ToastService;
+using BlazorApp.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
@@ -58,7 +59,7 @@ namespace BlazorApp.Client.Pages.Todos
             var todo = todos.First(x => x.TodoID == todoId);
             if (await Js.InvokeAsync<bool>("confirm", $"Do you want to delete {todo.Title}'s ({todo.TodoID}) Record?"))
             {
-                var result= await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
+                var result = await Client.DeleteAsync($"api/v1.0/Todo/{todoId}");
                 if (result.IsSuccessStatusCode)
                 {
                     ToastService.ShowToast("Deleted Successfully", ToastLevel.Success);

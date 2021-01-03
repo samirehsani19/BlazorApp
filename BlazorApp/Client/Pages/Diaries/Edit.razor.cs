@@ -23,7 +23,7 @@ namespace BlazorApp.Client.Pages.Diaries
         async Task EditDiary()
         {
             var result = await Client.PutAsJsonAsync("api/v1.0/diary", diary);
-            if (result.StatusCode ==HttpStatusCode.OK)
+            if (result.StatusCode == HttpStatusCode.OK)
             {
                 ToastService.ShowToast("Updated Successfully", ToastLevel.Success);
                 Nav.NavigateTo("diary");

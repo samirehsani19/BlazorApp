@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorApp.Client.ToastService;
+using BlazorApp.Shared.Models;
+using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using BlazorApp.Client.ToastService;
 
 namespace BlazorApp.Client.Pages.Todos
 {
@@ -13,6 +15,8 @@ namespace BlazorApp.Client.Pages.Todos
         [Inject] ToastService.ToastService ToastService { get; set; }
         BlazorApp.Shared.Models.Todo todo = new BlazorApp.Shared.Models.Todo();
 
+        [Inject] Blazored.LocalStorage.ILocalStorageService localStorage { get; set; }
+        
         async Task CreateTodo()
         {
             var result = await Client.PostAsJsonAsync("api/v1.0/todo", todo);

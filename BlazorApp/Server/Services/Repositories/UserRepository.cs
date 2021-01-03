@@ -15,7 +15,7 @@ namespace BlazorApp.Server.Services.Repositories
         {
             _logger.LogInformation($"Getting user by email: {email}");
             if (string.IsNullOrWhiteSpace(email)) _logger.LogInformation("Email is not valid");
-            return await _context.Users.FirstOrDefaultAsync(x=>x.Email==email);
+            return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
         }
 
         public virtual async Task<User> GetUserByID(int id)

@@ -161,6 +161,7 @@ C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\B
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Server.pdb
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Server.Views.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\BlazorApp.Server.Views.pdb
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\Blazored.LocalStorage.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
