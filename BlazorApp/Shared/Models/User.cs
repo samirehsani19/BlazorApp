@@ -14,6 +14,7 @@ namespace BlazorApp.Shared.Models
         //[RegularExpression(@"^[a-zA-Z]{2, 20}$", ErrorMessage = "Please choose a valid name")]
         public string LastName { get; set; }
         //[Required]
+        // ^([a-zA-Z_]{2,5}).(@[a-zA-Z_.]{4,30}).([a-zA-Z]{2,6}$) 
         //[RegularExpression(@"^[a-z0-9A-Z]{5, 30}.(com | se)$", ErrorMessage = "Please enter a valid Email")]
         public string Email { get; set; }
         //[Required]
