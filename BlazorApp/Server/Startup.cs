@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using Serilog;
 
 namespace BlazorApp.Server
 {
@@ -40,7 +41,7 @@ namespace BlazorApp.Server
             services.AddScoped<ITodo, TodoRepository>();
             services.AddScoped<IDiary, DiaryRepository>();
             services.AddScoped<IRepository, Repository>();
-            services.AddSingleton<ILogger, Logger<ILogger>>();
+            //services.AddSingleton<ILogger, Logger<ILogger>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +60,7 @@ namespace BlazorApp.Server
 
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
+            app.UseSerilogRequestLogging();  // log all request
 
             app.UseRouting();
 

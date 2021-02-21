@@ -452,9 +452,9 @@ C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\kn4b8eqTewTCrDhTMsoUkPZ2CVSNE32WJMSiTLfpJq4=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\MTpxVvtLMleFzWKQ7a9fUjvhtN3v_POG_v9KM4KMPWk=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\G3BTXsBYgh2DQqBLYGfa5zEzFrSuDgzRnDEHJKTlN_g=.hash
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\gxcb6v7p8TZLNz_xljjyz1w74bgkCKjeLawVxv9FDYQ=.hash
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\JWTszxdAtKMxIiyfK-O_dckNqSaYiCKXkWDb8XdcH9c=.hash
 C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\bin\Debug\netstandard2.1\Newtonsoft.Json.dll
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\GWyn4lGsNyISirHt-GWps57Cwpd422ea4W9pwt7SiQY=.hash
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\g2p6rISCw4bra3ksfLzVOndRto7sC_yDEnG8hCvG9PM=.hash
-C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\0qGIOeSsmGfXfNaPGrOd-i0pvb1wHwAtaMYrw2nZoYE=.hash
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\eGfXWzA9xbnvbCnrngK8-4LDT5mYP9CoxJllA5Ykr_g=.hash
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\BHk1Zy1GYOYCrYvDzIj7tUEiqCCSBXGZwTjs68_fHxs=.hash
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\itC3AGsRGLGK71WVSpy3T0EePql6zUaDSa76dbpYoDo=.hash
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\sZsN_1pUFETberjD60rOsz-4ufdtI4UIKjHv7-Uzlu8=.hash
+C:\Users\ehsan\source\repos\BlazorApp\BlazorApp\Client\obj\Debug\netstandard2.1\integrity\jta4d6JrVivU3_yR4-MAdaTPgAggEhh5ZRz9Rm1sT94=.hash

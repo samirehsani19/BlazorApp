@@ -1,7 +1,7 @@
 *.logs
-*.json
+appsettings.json
 *.Debug
-*.obj
+**/.obj
 *appsettings.Development.json
 
 # User-specific files
@@ -15,7 +15,8 @@ appsettings.json
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 **/Migration
-*.bin
+**/.bin
 *.dll
 *.cache
 *.pdb
+**/obj

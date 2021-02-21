@@ -9,7 +9,9 @@ namespace BlazorApp.Server.Services.Repositories
 {
     public class UserRepository : Repository, IUser
     {
-        public UserRepository(DataContext context, ILogger logger) : base(context, logger) { }
+        private readonly ILogger<UserRepository> _logger;
+
+        public UserRepository(DataContext context, ILogger<UserRepository> logger) : base(context) { this._logger = logger; }
 
         public async Task<User> GetUserByEmail(string email)
         {

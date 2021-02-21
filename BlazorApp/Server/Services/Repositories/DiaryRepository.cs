@@ -9,8 +9,10 @@ namespace BlazorApp.Server.Services.Repositories
 {
     public class DiaryRepository : Repository, IDiary
     {
-        public DiaryRepository(DataContext context, ILogger logger) : base(context, logger)
+        private readonly ILogger<DiaryRepository> _logger;
+        public DiaryRepository(DataContext context, ILogger<DiaryRepository>logger) : base(context)
         {
+            this._logger = logger;
         }
 
         public virtual async Task<Diary[]> GetDiaries()

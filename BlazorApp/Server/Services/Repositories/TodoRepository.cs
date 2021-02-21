@@ -9,8 +9,11 @@ namespace BlazorApp.Server.Services.Repositories
 {
     public class TodoRepository : Repository, ITodo
     {
-        public TodoRepository(DataContext context, ILogger logger) : base(context, logger)
+        private ILogger<TodoRepository> _logger;
+
+        public TodoRepository(DataContext context, ILogger<TodoRepository> logger) : base(context)
         {
+            this._logger = logger;
         }
 
         public virtual async Task<Todo> GetTodoByID(int id)

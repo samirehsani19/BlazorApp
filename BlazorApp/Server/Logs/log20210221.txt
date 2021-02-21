@@ -1,0 +1,34 @@
+02/21/2021 20:40:22 +01:00 Starting Application
+02/21/2021 20:40:35 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 96.4496 ms
+02/21/2021 20:40:35 +01:00 Getting todos
+02/21/2021 20:40:37 +01:00 HTTP "GET" "/api/v1.0/Todo" responded 200 in 1562.9024 ms
+02/21/2021 20:49:45 +01:00 Starting Application
+02/21/2021 20:49:59 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 86.1437 ms
+02/21/2021 20:49:59 +01:00 Getting todos
+02/21/2021 20:50:01 +01:00 HTTP "GET" "/api/v1.0/Todo" responded 200 in 1686.2990 ms
+02/21/2021 20:50:09 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 2.2538 ms
+02/21/2021 20:50:09 +01:00 Getting Diaries
+02/21/2021 20:50:09 +01:00 HTTP "GET" "/api/v1.0/Diary" responded 200 in 92.9840 ms
+02/21/2021 20:50:19 +01:00 Getting Diaries
+02/21/2021 20:50:19 +01:00 HTTP "DELETE" "/api/v1.0/diary/32" responded 200 in 432.5764 ms
+02/21/2021 20:50:19 +01:00 Getting Diaries
+02/21/2021 20:50:19 +01:00 HTTP "GET" "/api/v1.0/Diary" responded 200 in 10.7260 ms
+02/21/2021 20:50:19 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 0.7497 ms
+02/21/2021 20:50:19 +01:00 Getting Diaries
+02/21/2021 20:50:19 +01:00 HTTP "GET" "/api/v1.0/Diary" responded 200 in 10.0845 ms
+02/21/2021 21:05:25 +01:00 Starting Application
+02/21/2021 21:05:36 +01:00 Getting todos
+02/21/2021 21:05:44 +01:00 Getting Diaries
+02/21/2021 21:09:11 +01:00 Starting Application
+02/21/2021 21:09:27 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 86.0238 ms
+02/21/2021 21:09:27 +01:00 Getting todos
+02/21/2021 21:09:29 +01:00 HTTP "GET" "/api/v1.0/Todo" responded 200 in 1520.3510 ms
+02/21/2021 21:09:31 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 1.7484 ms
+02/21/2021 21:09:31 +01:00 Getting Diaries
+02/21/2021 21:09:31 +01:00 HTTP "GET" "/api/v1.0/Diary" responded 200 in 81.8534 ms
+02/21/2021 21:09:48 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 1.1438 ms
+02/21/2021 21:09:48 +01:00 Getting todos
+02/21/2021 21:09:48 +01:00 HTTP "GET" "/api/v1.0/Todo" responded 200 in 22.7052 ms
+02/21/2021 21:09:49 +01:00 HTTP "POST" "/MainHub/negotiate?negotiateVersion=1" responded 200 in 1.4439 ms
+02/21/2021 21:09:49 +01:00 Getting Diaries
+02/21/2021 21:09:49 +01:00 HTTP "GET" "/api/v1.0/Diary" responded 200 in 10.4525 ms
